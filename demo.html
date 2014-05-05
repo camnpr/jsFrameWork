@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>demo - WM</title>
+    <script src="WM-src.js" type="text/javascript"></script>
+    <link href="cssreset-min.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        body{font-size:13px;}
+        .wrap{width:1000px;margin:0 auto}
+        h1{font-size:15px;border-bottom:solid 2px #000;padding-bottom:2px;}
+        code{margin:5px 0;display:block;border:dotted 1px #ccc;padding:5px;}
+        code span{display:block}
+        code span:before{content:'> ';}
+        code span:nth-child(odd){border-top:solid 1px #000;margin:3px 0;color:Red}
+        code span:first-child{border:0;}
+        code span:nth-child(even){color:#1010ff}
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <h1>noConflict</h1>
+        <code>
+            <span>WM</span>
+            <span>Object {version: "0.1", noConflict: function, Util: Object}</span>
+            <span>WM.Util.formatNum(10.235,2);</span>
+            <span>10.24</span>
+            <span>var aa=WM.noConflict();</span>
+            <span>undefined</span>
+            <span>aa</span>
+            <span>Object {version: "0.1", noConflict: function, Util: Object}</span>
+            <span>aa.Util.formatNum(10.235,2);</span>
+            <span>10.24</span>
+        </code>
+
+
+    </div>
+</body>
+</html>
