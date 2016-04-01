@@ -1,6 +1,6 @@
 /**
 *@fileoverview 函数模块
-*@author yhw <hongwei@weimi.me>
+*@author Camnpr <camnpr@163.com>
 *@version 0.1
 */
 
@@ -244,7 +244,7 @@
         /**
     *@description Ajax 兼容IE6+
     */  
-    ST.Ajax = {
+    WM.Ajax = {
         config:{
             contentType: 'application/x-www-form-urlencoded'
         },
