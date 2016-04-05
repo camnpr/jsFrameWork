@@ -310,5 +310,163 @@
             this.config.contentType = value;
           }
     };
+    
+    /**
+    *@description 加密处理
+    */
+    WM.SSL = {
+        e: String.fromCharCode
+              , t: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-$"
+              , compressToUTF16: function(t) {return t;//tag
+                    return null  == t ? "" : r._compress(t, 15, function(t) {
+                        return e(t + 32)
+                    }
+                    ) + " "
+                },
+                compressToUint8Array: function(e) {return e;//tag
+                    for (var t = r.compress(e), n = new Uint8Array(2 * t.length), i = 0, o = t.length; o > i; i++) {
+                        var a = t.charCodeAt(i);
+                        n[2 * i] = a >>> 8,
+                        n[2 * i + 1] = a % 256
+                    }
+                    return n
+                },
+                compressToEncodedURIComponent: function(e) {return e;//tag
+                    return null  == e ? "" : r._compress(e, 6, function(e) {
+                        return t.charAt(e)
+                    }
+                    )
+                },
+                compress: function(t) {return t;//tag
+                    return r._compress(t, 16, function(t) {
+                        return e(t)
+                    }
+                    )
+                },
+                _compress: function(e, t, r) {
+                    if (null  == e)
+                        return "";
+                    var n, i, o, a = {}, s = {}, u = "", d = "", h = "", c = 2, l = 3, f = 2, p = [], g = 0, v = 0;
+                    for (o = 0; o < e.length; o += 1)
+                        if (u = e.charAt(o),
+                        Object.prototype.hasOwnProperty.call(a, u) || (a[u] = l++,
+                        s[u] = !0),
+                        d = h + u,
+                        Object.prototype.hasOwnProperty.call(a, d))
+                            h = d;
+                        else {
+                            if (Object.prototype.hasOwnProperty.call(s, h)) {
+                                if (h.charCodeAt(0) < 256) {
+                                    for (n = 0; f > n; n++)
+                                        g <<= 1,
+                                        v == t - 1 ? (v = 0,
+                                        p.push(r(g)),
+                                        g = 0) : v++;
+                                    for (i = h.charCodeAt(0),
+                                    n = 0; 8 > n; n++)
+                                        g = g << 1 | 1 & i,
+                                        v == t - 1 ? (v = 0,
+                                        p.push(r(g)),
+                                        g = 0) : v++,
+                                        i >>= 1
+                                } else {
+                                    for (i = 1,
+                                    n = 0; f > n; n++)
+                                        g = g << 1 | i,
+                                        v == t - 1 ? (v = 0,
+                                        p.push(r(g)),
+                                        g = 0) : v++,
+                                        i = 0;
+                                    for (i = h.charCodeAt(0),
+                                    n = 0; 16 > n; n++)
+                                        g = g << 1 | 1 & i,
+                                        v == t - 1 ? (v = 0,
+                                        p.push(r(g)),
+                                        g = 0) : v++,
+                                        i >>= 1
+                                }
+                                c--,
+                                0 == c && (c = Math.pow(2, f),
+                                f++),
+                                delete s[h]
+                            } else
+                                for (i = a[h],
+                                n = 0; f > n; n++)
+                                    g = g << 1 | 1 & i,
+                                    v == t - 1 ? (v = 0,
+                                    p.push(r(g)),
+                                    g = 0) : v++,
+                                    i >>= 1;
+                            c--,
+                            0 == c && (c = Math.pow(2, f),
+                            f++),
+                            a[d] = l++,
+                            h = String(u)
+                        }
+                    if ("" !== h) {
+                        if (Object.prototype.hasOwnProperty.call(s, h)) {
+                            if (h.charCodeAt(0) < 256) {
+                                for (n = 0; f > n; n++)
+                                    g <<= 1,
+                                    v == t - 1 ? (v = 0,
+                                    p.push(r(g)),
+                                    g = 0) : v++;
+                                for (i = h.charCodeAt(0),
+                                n = 0; 8 > n; n++)
+                                    g = g << 1 | 1 & i,
+                                    v == t - 1 ? (v = 0,
+                                    p.push(r(g)),
+                                    g = 0) : v++,
+                                    i >>= 1
+                            } else {
+                                for (i = 1,
+                                n = 0; f > n; n++)
+                                    g = g << 1 | i,
+                                    v == t - 1 ? (v = 0,
+                                    p.push(r(g)),
+                                    g = 0) : v++,
+                                    i = 0;
+                                for (i = h.charCodeAt(0),
+                                n = 0; 16 > n; n++)
+                                    g = g << 1 | 1 & i,
+                                    v == t - 1 ? (v = 0,
+                                    p.push(r(g)),
+                                    g = 0) : v++,
+                                    i >>= 1
+                            }
+                            c--,
+                            0 == c && (c = Math.pow(2, f),
+                            f++),
+                            delete s[h]
+                        } else
+                            for (i = a[h],
+                            n = 0; f > n; n++)
+                                g = g << 1 | 1 & i,
+                                v == t - 1 ? (v = 0,
+                                p.push(r(g)),
+                                g = 0) : v++,
+                                i >>= 1;
+                        c--,
+                        0 == c && (c = Math.pow(2, f),
+                        f++)
+                    }
+                    for (i = 2,
+                    n = 0; f > n; n++)
+                        g = g << 1 | 1 & i,
+                        v == t - 1 ? (v = 0,
+                        p.push(r(g)),
+                        g = 0) : v++,
+                        i >>= 1;
+                    for (; ; ) {
+                        if (g <<= 1,
+                        v == t - 1) {
+                            p.push(r(g));
+                            break
+                        }
+                        v++
+                    }
+                    return p.join("")
+                }
+        };
 	
 }(window, document));
